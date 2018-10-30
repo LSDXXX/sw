@@ -54,8 +54,8 @@ func DoBaotu(n int) bool {
 								min_pos = p
 							}
 						}
-						robotgo.MoveMouseSmooth(ThisGame.Rec.Top_x+min_pos.X,
-							ThisGame.Rec.Top_y+min_pos.Y)
+						robotgo.MoveMouseSmooth(min_pos.X,
+							min_pos.Y)
 						robotgo.Click()
 						robotgo.MicroSleep(wait_micsec)
 						robotgo.Click()
@@ -86,7 +86,7 @@ func DoBaotu(n int) bool {
 				if info.N == 3 {
 					ClickOnImg(fight_dadangjia)
 					OpenAuto()
-					robotgo.Sleep(1)
+					robotgo.Sleep(5)
 					for {
 						if !CheckBattle() {
 							break

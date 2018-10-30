@@ -107,8 +107,8 @@ func (t Game) GetEnemyPos(i int) Point {
 	xi := i
 	yi := -i
 	return Point{
-		x0 + xi*75,
-		y0 + yi*37,
+		t.Rec.Top_x + x0 + xi*75,
+		t.Rec.Top_y + y0 + yi*37,
 	}
 }
 
@@ -137,11 +137,6 @@ func init() {
 		74,
 		18,
 	}
-}
-
-func Test() robotgo.MRect {
-	rec := robotgo.GetClientRect(ThisGame.HGame)
-	return rec
 }
 
 //激活窗口 游戏关闭或者重新打开返回false其他返回true
@@ -712,19 +707,19 @@ func ClickOnRound(name string) bool {
 	x, y := SearchImg(round_npc1, ThisGame.Rec)
 	defer CheckAndCloseFriends()
 	y += 22
-	GetGameScreen(round_npc, Rect{
-		x,
-		y,
-		100,
-		20,
-	})
 	if len(name) != 0 {
+		GetGameScreen(round_npc, Rect{
+			x,
+			y,
+			100,
+			20,
+		})
 		str := GetText(round_npc)
 		if strings.Index(str, name) == -1 {
 			return false
 		}
 	}
-	robotgo.MoveMouseSmooth(ThisGame.Rec.Top_x+x, ThisGame.Rec.Top_y+y+8)
+	robotgo.MoveMouseSmooth(x, y+8)
 	robotgo.Click()
 	waitForStop()
 	return true
