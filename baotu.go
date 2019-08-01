@@ -12,6 +12,7 @@ import (
 //宝图任务
 func DoBaotu(n int) bool {
 	for i := 0; i < n; i++ {
+        //sss
 		for {
 			ClickCloseButton()
 			CheckAndOpenTask()
